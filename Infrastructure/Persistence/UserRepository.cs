@@ -36,9 +36,4 @@ public class UserRepository(ApplicationDbContext context) : IUserRepository
     {
         await context.SaveChangesAsync(ct);
     }
-
-    public async Task<bool> IsEmailUniqueAsync(string email, CancellationToken ct = default)
-    {
-        return !await context.Users.AnyAsync(u => u.Email == email, ct);
-    }
 }
